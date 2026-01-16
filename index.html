@@ -62,6 +62,23 @@
             position: relative;
             z-index: 1;
         }
+        /* Project & Achievement Images */
+        .project-image,
+        .achievement-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image,
+        .achievement-item:hover .achievement-image {
+            transform: scale(1.03);
+        }
+
 
         .profile-img {
             width: 180px;
@@ -258,6 +275,54 @@
             color: var(--text-secondary);
             line-height: 1.7;
         }
+        /* Image Modal (Fullscreen Preview) */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(99,102,241,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0 }
+            to { opacity: 1 }
+        }
+
+        /* Cursor hint */
+        .project-image,
+        .achievement-image {
+            cursor: zoom-in;
+        }
+
 
         /* Projects Grid */
         .projects-grid {
@@ -451,6 +516,10 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            .zoomable {
+            cursor: zoom-in;
+            }
+
 
             .profile-img {
                 width: 140px;
@@ -470,7 +539,7 @@
     <header>
         <div class="header-bg"></div>
         <div class="container header-content">
-            <img src="IMG_9873.JPG" alt="Reinhart Jens Robert" class="profile-img">
+            <img src="rein.jpg" alt="Reinhart Jens Robert" class="profile-img zoomable">
             <h1>Reinhart Jens Robert</h1>
             <p>Data Scientist | Machine Learning Enthusiast</p>
             <div class="contact-info">
@@ -498,120 +567,262 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="about-content">
-                <p>7th-semester Computer Science student at Universitas Dipa Makassar, specializing in Data Science and Machine Learning. Possess a strong passion for extracting insights from data and developing predictive models to solve complex business problems.</p>
-                <p>Proficient in Python with various libraries including Pandas, NumPy, Scikit-learn, Matplotlib, and Seaborn for data science and analytics purposes. Have in-depth understanding of supervised and unsupervised learning, model development, feature engineering, and model evaluation.</p>
-                <p>Experienced in end-to-end system development, database management with SQL queries and data warehousing, as well as web development using Python, PHP, HTML, and JavaScript. Demonstrate strong data analysis capabilities with comprehensive statistical interpretation, able to apply data-driven approaches in problem-solving with scientific methodology.</p>
-                <p>Dedicated to continuous learning and highly enthusiastic about the latest developments in the AI/ML ecosystem, ready to contribute to data science projects that deliver tangible business impact.</p>
+                <p>Data Science and Machine Learning specialist with a Computer Science background from Universitas Dipa 
+                    Makassar. Possess a strong passion for extracting insights from data and developing predictive models to solve 
+                    complex business problems. Proficient in Python with various libraries including Pandas, NumPy, Scikit-learn, 
+                    Matplotlib, and Seaborn for data science and analytics purposes.
+                    Have in-depth understanding of supervised and unsupervised learning, model development, feature engineering, and model evaluation. Experienced in end-to-end system development, database management with SQL queries and data warehousing, as well as web development 
+                    using Python, PHP, HTML, and JavaScript.Demonstrate strong data analysis capabilities with comprehensive 
+                    statistical interpretation, able to apply data-driven approaches in problem-solving with scientific methodology. Dedicated to continuous learning and highly enthusiastic about the latest developments in the AI/ML ecosystem, 
+                    ready to contribute to data science projects that deliver tangible business impact.
             </div>
         </section>
 
         <section id="education">
-            <h2>Education</h2>
+        <h2>Education</h2>
+
+        <div class="projects-grid">
+
+            <!-- Education 1 -->
             <div class="education-item">
+                <img src="img/education1.jpeg"
+                    class="achievement-image"
+                    alt="Universitas Dipa Makassar">
+
                 <h3>Universitas Dipa Makassar</h3>
-                <p class="date">2022 - Present | Makassar, Indonesia</p>
-                <p><strong>S1 Informatics Engineering</strong></p>
-                <p>GPA: 3.55/4.00</p>
-                <p>Specialization: Data Scientist</p>
+                <p class="date">2022 – Present | Makassar, Indonesia</p>
+
+                <p><strong>Bachelor of Informatics Engineering (S1)</strong></p>
+                <p>Specialization: Data Science</p>
+                <p>GPA: <strong>3.55 / 4.00</strong></p>
             </div>
+
+            <!-- Education 2 -->
             <div class="education-item">
+                <img src="img/education2.jpg"
+                    class="achievement-image"
+                    alt="SMAN 05 Makassar">
+
                 <h3>SMAN 05 Makassar</h3>
-                <p class="date">2019 - 2022 | Makassar, Indonesia</p>
-                <p><strong>Mathematics and Natural Sciences</strong></p>
+                <p class="date">2019 – 2022 | Makassar, Indonesia</p>
+
+                <p><strong>Mathematics and Natural Sciences (MIPA)</strong></p>
+                <p>Senior High School</p>
             </div>
-        </section>
+
+        </div>
+    </section>
+
 
         <section id="experience">
-            <h2>Experience</h2>
-            
-            <div class="experience-item">
-                <h3>Data Scientist - Home Credit Indonesia x Rakamin Academy</h3>
-                <p class="date">October - November 2025</p>
-                <ul>
-                    <li>Developed end-to-end machine learning models for credit scoring and risk assessment of loan products using Python, scikit-learn, and ensemble modeling techniques</li>
-                    <li>Conducted customer data analysis and segmentation using SQL and Python to support CRM Analytics strategy and cross-departmental marketing campaign optimization</li>
-                    <li>Completed a final project on end-to-end machine learning modeling for Home Credit new product development, encompassing data preprocessing, feature engineering, model selection, and model performance evaluation</li>
-                </ul>
-            </div>
+    <h2>Experience</h2>
 
-            <div class="experience-item">
-                <h3>Systems Analyst/Programmer - Bank Sulselbar</h3>
-                <p class="date">March - August 2025</p>
-                <ul>
-                    <li>Developed a pension fund membership website using Laravel PHP as part of a 5-member development team</li>
-                    <li>Applied systems analysis and programming for digital banking solutions in the pension fund management domain</li>
-                    <li>Collaborated within the team to design and implement a membership information system supporting Bank operations</li>
-                </ul>
-            </div>
+    <div class="projects-grid">
 
-            <div class="org-item">
-                <h3>Delegate Program - AIESEC Future Leaders (AFL)</h3>
-                <p class="date">November 2024 - January 2025</p>
-                <ul>
-                    <li>Development of leadership, communication, and collaboration skills in digital development projects and personal branding</li>
-                    <li>Honing interpersonal skills such as teamwork, negotiation, and problem-solving</li>
-                    <li>Participated in the planning, execution, and evaluation of a final project building team personal branding on Instagram platform to enhance digital visibility and engagement</li>
-                </ul>
-            </div>
-        </section>
+        <!-- Experience 1 -->
+        <div class="experience-item">
+            <img src="img/experience1.png"
+                 class="achievement-image"
+                 alt="Data Scientist Home Credit Indonesia">
+
+            <h3>Data Scientist – Home Credit Indonesia x Rakamin Academy</h3>
+            <p class="date">October – November 2025</p>
+
+            <ul>
+                <li>
+                    Developed end-to-end machine learning models for credit scoring
+                    and default risk prediction using Python and scikit-learn.
+                </li>
+                <li>
+                    Conducted data preprocessing, feature engineering, and model
+                    evaluation using ensemble methods.
+                </li>
+                <li>
+                    Built final ML pipeline as part of an industry case study
+                    for financial risk analytics.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="experience-item">
+            <img src="img/experience2.jpeg"
+                 class="achievement-image"
+                 alt="System Analyst Bank Sulselbar">
+
+            <h3>Systems Analyst / Programmer – Bank Sulselbar</h3>
+            <p class="date">March – August 2025</p>
+
+            <ul>
+                <li>
+                    Developed a pension fund membership web application using
+                    Laravel PHP and MySQL.
+                </li>
+                <li>
+                    Acted as system analyst translating business requirements
+                    into technical specifications.
+                </li>
+                <li>
+                    Collaborated in a team to design and deploy internal banking
+                    information systems.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="org-item">
+            <img src="img/experience3.jpeg"
+                 class="achievement-image"
+                 alt="AIESEC Future Leaders Program">
+
+            <h3>Delegate – AIESEC Future Leaders (AFL)</h3>
+            <p class="date">November 2024 – January 2025</p>
+
+            <ul>
+                <li>
+                    Developed leadership, communication, and collaboration skills
+                    through project-based learning.
+                </li>
+                <li>
+                    Worked in teams to build personal branding strategies
+                    on digital platforms.
+                </li>
+                <li>
+                    Delivered a final project focused on digital presence
+                    and audience engagement.
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
 
         <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>🦠 Covid-19 Distribution Analysis</h3>
-                    <p>Created and analyzed data on Covid-19 distribution in ASEAN and globally with comprehensive data visualization.</p>
-                    <a href="https://github.com/reinhart07/persebaran-covid/blob/main/Analisis%20data%20Covid-19%20(ADSE).pdf" class="project-link" target="_blank">View Project →</a>
-                </div>
+    <h2>Projects</h2>
 
-                <div class="project-card">
-                    <h3>🚢 Titanic Data Analysis</h3>
-                    <p>Analyzed and created data visualization of Titanic ship passengers to identify survival patterns.</p>
-                    <a href="https://github.com/reinhart07/titanic" class="project-link" target="_blank">View Project →</a>
-                </div>
+    <div class="projects-grid">
 
-                <div class="project-card">
-                    <h3>📊 E-Commerce Dashboard</h3>
-                    <p>Analyzed E-Commerce data and built an interactive dashboard using Streamlit for business monitoring.</p>
-                    <a href="https://github.com/reinhart07/Analisis_Data_Dicoding" class="project-link" target="_blank">View Project →</a>
-                </div>
+        <div class="project-card">
+            <img src="img/gambar1.png" class="project-image" alt="Covid-19 Distribution Analysis">
+            <h3>🦠 Covid-19 Distribution Analysis</h3>
+            <p>
+                Created and analyzed data on Covid-19 distribution in ASEAN and globally
+                with comprehensive data visualization.
+            </p>
+            <a href="https://github.com/reinhart07/persebaran-covid/blob/main/Analisis%20data%20Covid-19%20(ADSE).pdf"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
 
-                <div class="project-card">
-                    <h3>📈 Indonesia Poverty Line Analysis</h3>
-                    <p>Analyzed poverty line data in Indonesia with statistical approach and data visualization.</p>
-                    <a href="https://github.com/reinhart07/Belajar-machine-learning-Dicoding" class="project-link" target="_blank">View Project →</a>
-                </div>
+        <div class="project-card">
+            <img src="img/gambar2.png" class="project-image" alt="Titanic Data Analysis">
+            <h3>🚢 Titanic Data Analysis</h3>
+            <p>
+                Analyzed Titanic passenger data to identify survival patterns
+                using statistical analysis and visualization.
+            </p>
+            <a href="https://github.com/reinhart07/titanic"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
 
-                <div class="project-card">
-                    <h3>🎵 Music Recommendation System</h3>
-                    <p>Developed a music recommendation system based on Content-Based Filtering (audio features) and Collaborative Filtering (user preference patterns).</p>
-                    <a href="https://github.com/reinhart07/Rekomendasi-lagu-spotify" class="project-link" target="_blank">View Project →</a>
-                </div>
+        <div class="project-card">
+            <img src="img/gambar3.png" class="project-image" alt="E-Commerce Dashboard">
+            <h3>📊 E-Commerce Dashboard</h3>
+            <p>
+                Built an interactive E-Commerce dashboard using Streamlit
+                for business performance monitoring.
+            </p>
+            <a href="https://github.com/reinhart07/Analisis_Data_Dicoding"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
 
-                <div class="project-card">
-                    <h3>🐾 Animal Classification</h3>
-                    <p>Animal classification based on images using deep learning techniques.</p>
-                    <a href="https://github.com/reinhart07/Deteksi-Hewan" class="project-link" target="_blank">View Project →</a>
-                </div>
+        <div class="project-card">
+            <img src="img/gambar4.png" class="project-image" alt="Indonesia Poverty Line Analysis">
+            <h3>📈 Indonesia Poverty Line Analysis</h3>
+            <p>
+                Statistical analysis and visualization of poverty line data
+                in Indonesia to identify trends and patterns.
+            </p>
+            <a href="https://github.com/reinhart07/Belajar-machine-learning-Dicoding"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
 
-                <div class="project-card">
-                    <h3>🌶️ Chili Pepper Disease Detection</h3>
-                    <p>Collaborated in a team to create a website for chili pepper disease detection through leaf analysis using computer vision.</p>
-                    <a href="https://github.com/CodingCamp-ProjectCapstone/CProject-Machine_Learning" class="project-link" target="_blank">View Project →</a>
-                </div>
-                
-                <div class="project-card">
-                    <h3>💳 Home Credit Default Risk Prediction</h3>
-                    <p>Project Internship Home Credit - Home Credit Default Risk Prediction.</p>
-                    <a href="https://github.com/reinhart07/project-akhir-home-credit" class="project-link" target="_blank">View Project →</a>
-                </div>
-                <div class="project-card">
-                    <h3>📊 Data Mining Competition Project Indocoris</h3>
-                    <p>Analysis and Prediction of MSME Success in Makassar Using Machine Learning with a Hybrid Feature Engineering Approach</p>
-                    <a href="https://github.com/reinhart07/UMKM-Makassar-lomba-Indocoris" class="project-link" target="_blank">View Project →</a>
-                </div>
-            </div>
-        </section>
+        <div class="project-card">
+            <img src="img/gambar5.png" class="project-image" alt="Music Recommendation System">
+            <h3>🎵 Music Recommendation System</h3>
+            <p>
+                Developed a recommendation system using Content-Based
+                and Collaborative Filtering techniques.
+            </p>
+            <a href="https://github.com/reinhart07/Rekomendasi-lagu-spotify"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
+
+        <div class="project-card">
+            <img src="img/gambar6.png" class="project-image" alt="Animal Classification">
+            <h3>🐾 Animal Classification</h3>
+            <p>
+                Image-based animal classification using deep learning
+                and convolutional neural networks.
+            </p>
+            <a href="https://github.com/reinhart07/Deteksi-Hewan"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
+
+        <div class="project-card">
+            <img src="img/gambar7.png" class="project-image" alt="Chili Pepper Disease Detection">
+            <h3>🌶️ Chili Pepper Disease Detection</h3>
+            <p>
+                Web-based chili leaf disease detection system
+                using computer vision techniques.
+            </p>
+            <a href="https://github.com/CodingCamp-ProjectCapstone/CProject-Machine_Learning"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
+
+        <div class="project-card">
+            <img src="img/gambar8.png" class="project-image" alt="Home Credit Default Risk Prediction">
+            <h3>💳 Home Credit Default Risk Prediction</h3>
+            <p>
+                End-to-end machine learning project for predicting
+                customer credit default risk.
+            </p>
+            <a href="https://github.com/reinhart07/project-akhir-home-credit"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
+
+        <div class="project-card">
+            <img src="img/gambar9.png" class="project-image" alt="UMKM Indocoris Project">
+            <h3>📊 Data Mining Competition Project (Indocoris)</h3>
+            <p>
+                MSME success prediction using machine learning
+                with hybrid feature engineering.
+            </p>
+            <a href="https://github.com/reinhart07/UMKM-Makassar-lomba-Indocoris"
+               class="project-link" target="_blank">
+                View Project →
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
 
         <section id="skills">
             <h2>Skills</h2>
@@ -693,93 +904,100 @@
         </section>
 
         <section id="achievements">
-            <h2>Achievements</h2>
+        <h2>Achievements</h2>
+
+        <div class="projects-grid">
+
             <div class="achievement-item">
-                <h3>🏆 3rd Place Winner in Data Mining Competition - Indoneris 2025</h3>
+                <img src="img/achievement1.png"
+                    class="achievement-image"
+                    alt="3rd Place Data Mining Competition Indoneris 2025">
+                <h3>🏆 3rd Place – Data Mining Competition (Indoneris 2025)</h3>
+                <p>
+                    Achieved 3rd place in a national-level data mining competition,
+                    focusing on machine learning–based business insight generation.
+                </p>
             </div>
+
             <div class="achievement-item">
-                <h3>🏆 2nd Place Winner in Web Design Competition - Trunojoyo Creative Competition 2025</h3>
+                <img src="img/achievement2.png"
+                    class="achievement-image"
+                    alt="2nd Place Web Design Competition Trunojoyo 2025">
+                <h3>🏆 2nd Place – Web Design Competition (Trunojoyo 2025)</h3>
+                <p>
+                    Awarded 2nd place for designing a modern, responsive, and
+                    user-centered website interface.
+                </p>
             </div>
+
             <div class="achievement-item">
-                <h3>🎓 Selected to participate in the Certified Internship and Independent Study Program (MSIB Batch 7)</h3>
-                <p>Data Academy – Data Science conducted by the Ministry of Education and Culture</p>
+                <img src="img/achievement3.png"
+                    class="achievement-image"
+                    alt="MSIB Batch 7 Data Science">
+                <h3>🎓 MSIB Batch 7 – Data Science</h3>
+                <p>
+                    Selected for the Certified Internship and Independent Study Program
+                    in Data Science under the Ministry of Education and Culture.
+                </p>
             </div>
+
             <div class="achievement-item">
-                <h3>🎓 Selected to participate in the Independent Study – Machine Learning program</h3>
-                <p>Dicoding x DBS Foundation</p>
+                <img src="img/achievement5.png"
+                    class="achievement-image"
+                    alt="PKM Funding Award">
+                <h3>💡 PKM Funding Recipient</h3>
+                <p>
+                    Selected to receive funding for the Student Creativity Program (PKM),
+                    awarded by the Ministry of Education and Culture.
+                </p>
             </div>
-            <div class="achievement-item">
-                <h3>💡 Selected to receive funding for the Student Creativity Program (PKM)</h3>
-                <p>Conducted by the Ministry of Education and Culture</p>
-            </div>
-        </section>
+
+        </div>
+    </section>
+
+
     </div>
 
-    <footer>
+        <footer>
         <div class="container">
             <p>&copy; 2025 Reinhart Jens Robert. All Rights Reserved.</p>
             <p>Makassar, Indonesia</p>
         </div>
-    </footer>
+        </footer>
 
-    <script>
-        // Smooth scrolling for navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        <!-- 👇 MODAL DI SINI -->
+        <div id="imageModal" class="image-modal">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" alt="Preview Image">
+        </div>
+
+        <!-- 👇 BARU SCRIPT -->
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const closeBtn = document.querySelector(".close-modal");
+
+            document.querySelectorAll(".project-image, .achievement-image, .zoomable")
+                .forEach(img => {
+                    img.addEventListener("click", () => {
+                        modal.style.display = "flex";
+                        modalImg.src = img.src;
+                    });
+                });
+
+            closeBtn.onclick = () => modal.style.display = "none";
+
+            modal.onclick = e => {
+                if (e.target === modal) modal.style.display = "none";
+            };
+
+            document.addEventListener("keydown", e => {
+                if (e.key === "Escape") modal.style.display = "none";
             });
         });
+        </script>
 
-        // Progress bar on scroll
-        window.addEventListener('scroll', () => {
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
-        });
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Add active state to navigation
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('nav a').forEach(a => {
-                a.style.color = '';
-                a.style.background = '';
-                if (a.getAttribute('href').slice(1) === current) {
-                    a.style.color = 'var(--accent-primary)';
-                    a.style.background = 'rgba(99, 102, 241, 0.1)';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
